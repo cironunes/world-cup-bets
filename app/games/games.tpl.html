@@ -1,5 +1,7 @@
 <ul>
   <li ng-repeat="game in games">
-    {{ game.home_team.country }} vs {{ game.away_team.country }}
+    <img ng-src="images/flags/{{ game.home_team.country | flags }}.png">
+    <strong>{{ game.home_team.country }}</strong> vs <strong>{{ game.away_team.country }}</strong>
+    <img ng-src="images/flags/{{ game.away_team.country | flags }}.png">
   </li>
 </ul>
