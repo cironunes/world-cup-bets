@@ -8,6 +8,6 @@ describe('Filter: Flags', function() {
   }));
 
   it('should get the correct name of the file of the flag', function() {
-    expect(flagsFilter('Korea Republic')).toBe('Korea-Republic');
+    expect(flagsFilter('Bosnia and Herzergovina')).toBe('Bosnia-and-Herzergovina');
   });
 });

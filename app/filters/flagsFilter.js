@@ -3,6 +3,6 @@
 angular.module('filters')
   .filter('flags', function() {
     return function(input) {
-      return input.replace(' ', '-');
+      return input.replace(/\s/g, '-');
     };
   });
