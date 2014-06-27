@@ -1,3 +1,5 @@
-<img ng-src="images/flags/{{ match.home_team.country | flags }}.png">
+<input type="text" placeholder="0" ng-model="match.home_team.bet"> <img ng-src="images/flags/{{ match.home_team.country | flags }}.png">
 <strong>{{ match.home_team.country }}</strong> vs <strong>{{ match.away_team.country }}</strong>
-<img ng-src="images/flags/{{ match.away_team.country | flags }}.png">
+<input type="text" placeholder="0" ng-model="match.away_team.bet"> <img ng-src="images/flags/{{ match.away_team.country | flags }}.png">
+
+<bt-share-twitter bet="match"></bt-share-twitter>
