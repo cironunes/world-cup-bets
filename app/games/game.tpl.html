@@ -1,15 +1,3 @@
 <input type="text" placeholder="0" ng-model="match.home_team.bet"> <img ng-src="images/flags/{{ match.home_team.country | flags }}.png">
 <strong>{{ match.home_team.country }}</strong> vs <strong>{{ match.away_team.country }}</strong>
 <input type="text" placeholder="0" ng-model="match.away_team.bet"> <img ng-src="images/flags/{{ match.away_team.country | flags }}.png">
-
-<bt-share-twitter
-  text="match | bet"
-  url="'http://www.worldcupbets.com'"
-  active="match | validBet"
-  ng-disabled="!(match | validBet)"></bt-share-twitter>
-
-<bt-share-facebook
-  text="match | bet"
-  url="'http://www.worldcupbets.com'"
-  active="match | validBet"
-  ng-disabled="!(match | validBet)"></bt-share-facebook>

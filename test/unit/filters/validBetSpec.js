@@ -15,7 +15,7 @@ describe('Filter: validBet', function() {
     var _bet;
 
     afterEach(function() {
-      expect(filter(_bet)).toBeTruthy();
+      expect(filter(_bet)).toBe(_bet);
     });
 
     it('it contains bets for both teams', function() {
@@ -31,7 +31,7 @@ describe('Filter: validBet', function() {
     var _bet;
 
     afterEach(function() {
-      expect(filter(_bet)).toBeFalsy();
+      expect(filter(_bet)).toBeNull();
     });
 
     it('home team does not have a bet', function() {
@@ -48,6 +48,23 @@ describe('Filter: validBet', function() {
 
     it('away team does not have a valid bet', function() {
       _bet = simpleBet(2, 'text');
+    });
+  });
+
+  describe('for arrays', function() {
+    it('should return a subset of valid bets only', function() {
+      var bets = [
+          simpleBet(1, 2),
+          simpleBet(1, undefined),
+          simpleBet(),
+          {},
+          simpleBet(0, 0)
+        ],
+        validBets = filter(bets);
+
+      expect(validBets.length).toBe(2);
+      expect(validBets[0]).toBe(bets[0]);
+      expect(validBets[1]).toBe(bets[4]);
     });
   });
 });

@@ -3,3 +3,19 @@
     <bt-game match="game"></bt-game>
   </li>
 </ul>
+
+<div>
+  <bt-share-twitter
+    text="games | bet"
+    url="'http://www.worldcupbets.com'"
+    active="(games | validBet).length"
+    ng-disabled="!(games | validBet).length"></bt-share-twitter>
+</div>
+
+<div>
+  <bt-share-facebook
+    text="games | bet"
+    url="'http://www.worldcupbets.com'"
+    active="(games | validBet).length"
+    ng-disabled="!(games | validBet).length"></bt-share-facebook>
+</div>
