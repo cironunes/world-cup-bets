@@ -2,39 +2,26 @@
 
 angular.module('bt.share')
   .service('share', ['$window', function($window) {
-    var MESSAGE = 'Here goes my #WorldCupBets: ';
+    var TWITTER_URL_TPL = 'http://twitter.com/intent/tweet?text={0}&url={1}',
+      FACEBOOK_URL_TPL = 'http://www.facebook.com/sharer.php?s=100&' +
+        'p[title]=title&p[url]={1}&' +
+        'p[summary]={0}&' +
+        'p[images][0]=' +
+        'http://upload.wikimedia.org/wikipedia/en/thumb/e/e8/WC-2014-Brasil.svg/719px-WC-2014-Brasil.svg.png';
 
-    function formatBetMessage(match) {
-      return match.home_team.code + ' ' + match.home_team.bet + ' x ' + match.away_team.bet + ' ' + match.away_team.code;
+    function replaceTextAndUrl(tpl, text, url) {
+      return tpl.replace('{0}', encodeURIComponent(text))
+        .replace('{1}', encodeURIComponent(url));
     }
 
-    function openTwitterShare(msg) {
-      $window.open(
-        'https://twitter.com/share?text=' + encodeURIComponent(msg),
-        'twitter-share',
-        'height=440, width=720'
-      );
-    }
-
-    function openFacebookShare(msg) {
-      $window.open(
-        'http://www.facebook.com/sharer.php?s=100&' +
-        'p[title]=title&p[url]=http://www.worldcupbets.com&' +
-        'p[summary]=' + encodeURIComponent(msg) +
-        'summary&p[images][0]= ' +
-        'http://upload.wikimedia.org/wikipedia/en/thumb/e/e8/WC-2014-Brasil.svg/719px-WC-2014-Brasil.svg.png',
-        'facebook-share',
-        'height=440, width=720'
-      );
+    this.shareOnTwitter = function(text, url) {
+      var url = replaceTextAndUrl(TWITTER_URL_TPL, text, url);
+      $window.open(url, null, 'height=440, width=720');
     };
 
-    this.shareOnTwitter = function(bet) {
-      bet = formatBetMessage(bet);
-      openTwitterShare(MESSAGE + bet);
-    };
-
-    this.shareOnFacebook = function(bet) {
-      bet = formatBetMessage(bet);
-      openFacebookShare(MESSAGE + bet);
+    // TODO: add title and images params
+    this.shareOnFacebook = function(text, url) {
+      var url = replaceTextAndUrl(FACEBOOK_URL_TPL, text, url);
+      $window.open(url, null, 'height=440, width=720');
     };
   }]);

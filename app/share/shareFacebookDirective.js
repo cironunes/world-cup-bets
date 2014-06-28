@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bt.share')
-  .directive('btShareTwitter', function(share, $window) {
+  .directive('btShareFacebook', function(share, $window) {
     return {
       restrict: 'EA',
       replace: true,
@@ -13,10 +13,10 @@ angular.module('bt.share')
       controller: function($scope, $attrs) {
         $scope.share = function() {
           if (!$attrs.active || $scope.active()) {
-            share.shareOnTwitter($scope.text, $scope.url);
+            share.shareOnFacebook($scope.text, $scope.url);
           }
         };
       },
-      template: '<button ng-click="share()">Share on Twitter</button>'
+      template: '<button ng-click="share()">Share on Facebook</button>'
     };
   });

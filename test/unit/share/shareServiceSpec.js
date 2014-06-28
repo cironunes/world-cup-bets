@@ -9,9 +9,14 @@ describe('share service', function() {
     spyOn($window, 'open');
   }));
 
-  function getLastMessage() {
+  function getLastUrl() {
     var url = $window.open.mostRecentCall.args[0];
-    return decodeURIComponent(url.substring(url.indexOf('text=') + 5));
+    return /[^?]+/.exec(url)[0];
+  }
+
+  function getLastCallParam(param) {
+    var url = $window.open.mostRecentCall.args[0];
+    return new RegExp('[?&]' + param + '=([^&]+)').exec(url)[1];
   }
 
   function bet(home, homeBet, away, awayBet) {
@@ -28,24 +33,28 @@ describe('share service', function() {
   }
 
   describe('#twitter', function() {
-    it('should create a twitter message for each bet, and join them by " - "', function() {
-      share.shareOnTwitter(bet('BRA', 1, 'CHI', 2));
-
-      expect(getLastMessage().indexOf('BRA 1 x 2 CHI')).not.toBe(-1);
+    it('should open the sharer with the correct URL', function() {
+      share.shareOnTwitter('my message', 'http://example.com');
+      expect(getLastUrl()).toBe('http://twitter.com/intent/tweet');
     });
 
-    it('should keep the message under 140', function() {
-      share.shareOnTwitter(bet('BRA', 1, 'CHI', 2));
-
-      expect(getLastMessage().length).toBeLessThan(140);
+    it('should use the correct encoded message and URL', function() {
+      share.shareOnTwitter('my message', 'http://example.com');
+      expect(getLastCallParam('text')).toBe(encodeURIComponent('my message'));
+      expect(getLastCallParam('url')).toBe(encodeURIComponent('http://example.com'));
     });
   });
 
   describe('#facebook', function() {
-    it('should create a message for a bet', function() {
-      share.shareOnFacebook(bet('BRA', 1, 'CHI', 2));
+    it('should open the sharer with the correct URL', function() {
+      share.shareOnFacebook('my message', 'http://example.com');
+      expect(getLastUrl()).toBe('http://www.facebook.com/sharer.php');
+    });
 
-      expect(getLastMessage().indexOf('BRA 1 x 2 CHI')).not.toBe(-1);
+    it('should use the correct encoded message and URL', function() {
+      share.shareOnFacebook('my message', 'http://example.com');
+      expect(getLastCallParam('p\\[summary\\]')).toBe(encodeURIComponent('my message'));
+      expect(getLastCallParam('p\\[url\\]')).toBe(encodeURIComponent('http://example.com'));
     });
   });
 });
