@@ -7,21 +7,8 @@ describe('Filter: validBet', function() {
     filter = $filter('validBet');
   }));
 
-  function bet(home, homeBet, away, awayBet) {
-    return {
-      home_team: {
-        code: home,
-        bet: homeBet
-      },
-      away_team: {
-        code: away,
-        bet: awayBet
-      }
-    };
-  }
-
   function simpleBet(home, away) {
-    return bet('BRA', home, 'CHI', away);
+    return mockBet('BRA', home, 'CHI', away);
   }
 
   describe('should be valid if', function() {

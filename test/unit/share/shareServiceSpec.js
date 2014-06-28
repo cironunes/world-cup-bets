@@ -19,19 +19,6 @@ describe('share service', function() {
     return new RegExp('[?&]' + param + '=([^&]+)').exec(url)[1];
   }
 
-  function bet(home, homeBet, away, awayBet) {
-    return {
-      home_team: {
-        code: home,
-        bet: homeBet
-      },
-      away_team: {
-        code: away,
-        bet: awayBet
-      }
-    };
-  }
-
   describe('#twitter', function() {
     it('should open the sharer with the correct URL', function() {
       share.shareOnTwitter('my message', 'http://example.com');

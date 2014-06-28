@@ -14,7 +14,7 @@ module.exports = {
     'app/!(bower_components)/*Provider.js',
     'app/!(bower_components)/*Filter.js',
 
+    'test/unit/lib/**/*.js',
     'test/unit/**/*Spec.js'
   ]
 };
-
