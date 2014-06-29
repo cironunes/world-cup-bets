@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bt.share')
-  .directive('btShareTwitter', function(share, $window) {
+  .directive('btShareTwitter', function(share) {
     return {
       restrict: 'EA',
       replace: true,

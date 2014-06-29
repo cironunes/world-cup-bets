@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('bt.games', [])
+angular.module('bt.games', []);
