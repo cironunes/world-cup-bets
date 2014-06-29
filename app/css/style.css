@@ -82,20 +82,31 @@ body {
 
 .bet {
   font-family: Arial;
-  background-color: rgba(38, 79, 0, .3);
+  color: #fff;
+  background: rgba(38, 79, 0, .3) url(../images/input-placeholder.png) no-repeat 22px 26px;
   width: 60px;
   height: 60px;
   border: 2px solid #fff;
   border-radius: 200px;
   font-size: 40px;
   padding-left: 17px;
-  box-shadow: inset 0px 5px 8px rgba(0,0, 0,.4), inset 0px -5px 8px rgba(0,0, 0,.4);
+  box-shadow: inset 0px 5px 8px rgba(0, 0, 0, .4), inset 0px -5px 8px rgba(0, 0, 0, .4);
 }
 
-.bet:focus {
+.bet:focus,
+.bet.valid {
+  background-image: none;
+}
+
+.bet:disabled {
+  opacity: .5;
+}
+
+.bet,
+.bt-share-twitter,
+.bt-share-facebook {
   outline: none;
 }
-
 
 .flag {
   display: inline-block;
@@ -106,6 +117,20 @@ body {
 
 .flag img {
   display: block;
+}
+
+.skip-bet-switcher {
+  font-size: 10px;
+  font-weight: normal;
+}
+
+.skip-bet-action {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.skip-bet-skipped {
+  opacity: .4;
 }
 
 .controls {
@@ -144,4 +169,3 @@ body {
 .bt-share-facebook:hover {
   background-color: #2d4985;
 }
-
