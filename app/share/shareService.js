@@ -15,13 +15,13 @@ angular.module('bt.share')
     }
 
     this.shareOnTwitter = function(text, url) {
-      var url = replaceTextAndUrl(TWITTER_URL_TPL, text, url);
+      url = replaceTextAndUrl(TWITTER_URL_TPL, text, url);
       $window.open(url, null, 'height=440, width=720');
     };
 
     // TODO: add title and images params
     this.shareOnFacebook = function(text, url) {
-      var url = replaceTextAndUrl(FACEBOOK_URL_TPL, text, url);
+      url = replaceTextAndUrl(FACEBOOK_URL_TPL, text, url);
       $window.open(url, null, 'height=440, width=720');
     };
   }]);

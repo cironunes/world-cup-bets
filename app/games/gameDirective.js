@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 angular.module('bets')
   .directive('btGame', function() {
@@ -6,5 +6,5 @@ angular.module('bets')
       restrict: 'E',
       scope: { match: '=' },
       templateUrl: 'games/game.tpl.html'
-    }
+    };
   });
