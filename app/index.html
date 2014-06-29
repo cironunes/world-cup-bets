@@ -3,10 +3,46 @@
 <head>
   <meta charset="utf-8">
   <title>Bets</title>
+
+  <meta name="viewport" content="width=device-width">
+
+  <link rel="stylesheet" href="bower_components/normalize-css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <link href='http://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
 </head>
 <body ng-app="bets">
-  <div ng-controller="AppCtrl">
+  <div class="wrapper" ng-controller="AppCtrl">
+    <header>
+      <h1 class="logo">
+        <strong class="logo-name">Bets</strong>
+        <div class="logo-container">
+          <span class="logo-championship">World Cup</span>
+          <br>
+          <span class="logo-year">2014</span>
+        </div>
+      </h1>
+    </header>
+
     <bt-games></bt-games>
+
+    <footer class="controls">
+      <div class="controls-wrapper">
+        <bt-share-twitter
+          text="games | bet"
+          url="'http://www.worldcupbets.com'"
+          active="(games | validBet).length"
+          ng-disabled="!(games | validBet).length"></bt-share-twitter>
+      </div>
+
+      <div class="controls-wrapper">
+        <bt-share-facebook
+          text="games | bet"
+          url="'http://www.worldcupbets.com'"
+          active="(games | validBet).length"
+          ng-disabled="!(games | validBet).length"></bt-share-facebook>
+      </div>
+    </footer>
   </div>
 
   <script src="bower_components/angular/angular.js"></script>

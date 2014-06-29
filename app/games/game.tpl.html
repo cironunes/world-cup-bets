@@ -1,3 +1,15 @@
-<input type="text" placeholder="0" ng-model="match.home_team.bet"> <img ng-src="images/flags/{{ match.home_team.country | flags }}.png">
-<strong>{{ match.home_team.country }}</strong> vs <strong>{{ match.away_team.country }}</strong>
-<input type="text" placeholder="0" ng-model="match.away_team.bet"> <img ng-src="images/flags/{{ match.away_team.country | flags }}.png">
+<div class="flag">
+  <img ng-src="images/flags/{{ match.home_team.country | flags }}.png">
+  <strong class="team-name">{{ match.home_team.code }}</strong>
+</div>
+
+<input type="number" min="0" placeholder="0" class="bet" ng-model="match.home_team.bet">
+
+<strong class="separator">x</strong>
+
+<input type="number" min="0" placeholder="0" class="bet" ng-model="match.away_team.bet">
+
+<div class="flag">
+  <img ng-src="images/flags/{{ match.away_team.country | flags }}.png">
+  <strong class="team-name">{{ match.away_team.code }}</strong>
+</div>
