@@ -1,4 +1,4 @@
-'use restrict'
+'use strict'
 
 angular.module('bets')
   .directive('btGame', function() {
