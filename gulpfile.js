@@ -25,7 +25,7 @@ gulp.task('html', function() {
     .pipe(connect.reload());
 });
 
-gulp.task('js', function() {
+gulp.task('js', ['jshint'], function() {
   gulp.src('./app/**/*.js')
     .pipe(connect.reload());
 });
@@ -49,4 +49,3 @@ gulp.task('serve', ['watch'], function() {
 });
 
 gulp.task('default', ['tdd']);
-

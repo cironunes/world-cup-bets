@@ -3,6 +3,7 @@
 angular.module('filters')
   .filter('validBet', function() {
     function isBetValid(bet) {
+      /* jshint camelcase: false */
       return bet && bet.home_team && !isNaN(parseInt(bet.home_team.bet)) &&
         bet.away_team && !isNaN(parseInt(bet.away_team.bet));
     }

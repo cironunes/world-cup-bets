@@ -7,6 +7,7 @@ angular.module('bt.games')
       scope: { match: '=' },
       controller: function($scope) {
         $scope.toggleSkipMatch = function(match) {
+          /* jshint camelcase: false */
           match.skipped = !match.skipped;
 
           if (match.skipped) {

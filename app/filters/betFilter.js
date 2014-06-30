@@ -6,6 +6,7 @@ angular.module('filters')
       validityCheck = $filter('validBet');
 
     function formatBetMessage(bet) {
+      /* jshint camelcase: false */
       return bet.home_team.code + ' ' + bet.home_team.bet + ' x ' + bet.away_team.bet + ' ' + bet.away_team.code;
     }
 
