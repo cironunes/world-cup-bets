@@ -72,15 +72,15 @@ gulp.task('clean', function(cb) {
   rimraf('dist', rimraf.bind({}, '.tmp', cb));
 });
 
-gulp.task('deploy', function() {
+gulp.task('build', ['clean'], function(cb) {
+  runSequence('css', ['images', 'html'], cb);
+});
+
+gulp.task('deploy', ['build'], function() {
   gulp.src('./dist/**/*')
     .pipe(deploy({
       cacheDir: '.tmp'
     }));
-});
-
-gulp.task('build', ['clean'], function(cb) {
-  runSequence('css', ['images', 'html', 'deploy'], cb);
 });
 
 gulp.task('default', ['tdd']);
