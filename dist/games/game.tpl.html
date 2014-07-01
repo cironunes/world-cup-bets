@@ -1,0 +1,28 @@
+<div class="flag">
+  <img ng-src="images/flags/{{ match.home_team.country | flags }}.png">
+  <strong class="team-name">{{ match.home_team.code }}</strong>
+</div>
+
+<input type="text" pattern="\d{1}" maxlength="1" class="bet"
+  ng-class="{valid: match.home_team.bet > 0}"
+  ng-model="match.home_team.bet"
+  ng-disabled="match.skipped">
+
+<strong class="separator">x</strong>
+
+<input type="text" pattern="\d{1}" maxlength="1" class="bet"
+  ng-class="{valid: match.away_team.bet > 0}"
+  ng-model="match.away_team.bet"
+  ng-disabled="match.skipped">
+
+<div class="flag">
+  <img ng-src="images/flags/{{ match.away_team.country | flags }}.png">
+  <strong class="team-name">{{ match.away_team.code }}</strong>
+</div>
+
+<div class="skip-bet-switcher">
+  <span class="skip-bet-action" ng-if="!match.skipped" ng-click="toggleSkipMatch(match)">Skip</span>
+  <span class="skip-bet-skipped" ng-if="match.skipped">
+    Skipped. <span class="skip-bet-action" ng-click="toggleSkipMatch(match)">Undo</span>
+  </span>
+</div>
