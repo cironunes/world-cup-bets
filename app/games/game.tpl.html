@@ -4,14 +4,14 @@
 </div>
 
 <input type="text" pattern="\d{1}" maxlength="1" class="bet"
-  ng-class="{valid: match.home_team.bet > 0}"
+  ng-class="{valid: match.home_team.bet >= 0 && match.home_team.bet !== ''}"
   ng-model="match.home_team.bet"
   ng-disabled="match.skipped">
 
 <strong class="separator">x</strong>
 
 <input type="text" pattern="\d{1}" maxlength="1" class="bet"
-  ng-class="{valid: match.away_team.bet > 0}"
+  ng-class="{valid: match.away_team.bet >= 0 && match.away_team.bet !== ''}"
   ng-model="match.away_team.bet"
   ng-disabled="match.skipped">
 

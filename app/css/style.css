@@ -22,7 +22,7 @@ body {
   max-width: 480px;
   margin: 0 auto;
   border: 1px solid #80c700;
-  padding: 40px;
+  padding: 27px;
   box-shadow: inset 0px 0px 6px rgba(0,0,0,.5);
 }
 
@@ -102,9 +102,7 @@ body {
   opacity: .5;
 }
 
-.bet,
-.bt-share-twitter,
-.bt-share-facebook {
+.bet {
   outline: none;
 }
 
@@ -131,41 +129,4 @@ body {
 
 .skip-bet-skipped {
   opacity: .4;
-}
-
-.controls {
-  display: table;
-  width: 100%;
-}
-.controls .controls-wrapper {
-  display: table-cell;
-  width: 50%;
-}
-
-.controls button {
-  font-family: Helvetica, Arial, sans-serif;
-  border: 0;
-  width: 100%;
-  padding: 20px 0;
-  cursor: pointer;
-}
-
-.controls button[disabled] {
-  opacity: .3;
-}
-
-.bt-share-twitter {
-  background-color: #34ccfe;
-}
-
-.bt-share-twitter:hover {
-  background-color: #22b5e5;
-}
-
-.bt-share-facebook {
-  background-color: #3b5999;
-}
-
-.bt-share-facebook:hover {
-  background-color: #2d4985;
 }
