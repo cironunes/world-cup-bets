@@ -21723,10 +21723,18 @@ angular.module('bets', ['filters', 'bt.games', 'bt.share']);
 'use strict';
 
 angular.module('bets')
-  .controller('AppCtrl', function($scope, gamesLoader) {
+  .controller('AppCtrl', function($scope, $filter, gamesLoader) {
+    var validBetFilter = $filter('validBet');
+
     gamesLoader.getGames().then(function(data) {
       $scope.games = data;
     });
+
+    $scope.hasValidBets = function(games) {
+      var validity = validBetFilter(games);
+
+      return validity ? validity.length > 0 : false;
+    };
   });
 
 'use strict';
@@ -21917,7 +21925,7 @@ angular.module('bt.share')
           }
         };
       },
-      template: '<button class="bt-share-twitter" ng-click="share()"><img src="images/icon-twitter.png"></button>'
+      template: '<button class="bt-share bt-share-twitter" ng-click="share()">Share it</button>'
     };
   });
 
@@ -21940,6 +21948,6 @@ angular.module('bt.share')
           }
         };
       },
-      template: '<button class="bt-share-facebook" ng-click="share()"><img src="images/icon-facebook.png"></button>'
+      template: '<button class="bt-share bt-share-facebook" ng-click="share()">Share it</button>'
     };
   });

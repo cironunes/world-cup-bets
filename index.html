@@ -26,27 +26,25 @@
     <bt-games></bt-games>
 
     <footer class="controls">
-      <div class="controls-wrapper">
-        <bt-share-twitter
+      <bt-share-twitter
           text="games | bet"
-          url="'http://www.worldcupbets.com'"
+          url="'http://www.cironunes.com/world-cup-bets/'"
           active="(games | validBet).length"
-          ng-disabled="!(games | validBet).length"></bt-share-twitter>
-      </div>
+          ng-class="{active: hasValidBets(games), inactive: !hasValidBets(games)}">
+      </bt-share-twitter>
 
-      <div class="controls-wrapper">
         <bt-share-facebook
           text="games | bet"
-          url="'http://www.worldcupbets.com'"
+          url="'http://www.cironunes.com/world-cup-bets/'"
           active="(games | validBet).length"
-          ng-disabled="!(games | validBet).length"></bt-share-facebook>
-      </div>
+          ng-class="{active: hasValidBets(games), inactive: !hasValidBets(games)}">
+        </bt-share-facebook>
     </footer>
   </div>
 
   <script src="js/app.js"></script>
 
-  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+  <!-- Google Analytics -->
   <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
     function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;

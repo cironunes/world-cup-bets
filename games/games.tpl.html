@@ -1,6 +1,12 @@
-<ol class="games">
-  <li ng-repeat="game in games">
-    <bt-game match="game"></bt-game>
-  </li>
-</ol>
+<div ng-if="games.length > 0">
+  <ol class="games">
+    <li ng-repeat="game in games">
+      <bt-game match="game"></bt-game>
+    </li>
+  </ol>
+</div>
+
+<div ng-if="games.length === 0">
+  <h1>Sorry, there are no games today.</h1>
+</div>
 
