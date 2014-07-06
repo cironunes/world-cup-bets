@@ -5,6 +5,7 @@ var connect     = require('gulp-connect');
 var jshint      = require('gulp-jshint');
 var useref      = require('gulp-useref');
 var deploy      = require('gulp-gh-pages');
+var compass     = require('gulp-compass');
 var runSequence = require('run-sequence');
 var rimraf      = require('rimraf');
 var karma       = require('karma').server;
@@ -52,6 +53,16 @@ gulp.task('css', function() {
     .pipe(connect.reload());
 });
 
+gulp.task('styles', function() {
+  return gulp.src(['app/css/*.scss'])
+    .pipe(compass({
+      sass: 'app/css',
+      css: 'app/css'
+    }))
+    .pipe(gulp.dest('dist/css'))
+    .pipe(connect.reload());
+});
+
 gulp.task('images', function() {
   return gulp.src('app/images/**/*')
     .pipe(gulp.dest('dist/images'));
@@ -59,8 +70,9 @@ gulp.task('images', function() {
 
 gulp.task('watch', function() {
   gulp.watch(['.app/index.html', './app/**/*.html'], ['html']);
-  gulp.watch(['./app/**/*.js'], ['js']);
+  gulp.watch(['.app/app.js', './app/**/*.js'], ['js']);
   gulp.watch(['./app/**/*.css'], ['css']);
+  gulp.watch(['./app/**/*.scss', './app/**/**/*.scss'], ['styles']);
 });
 
 gulp.task('serve', ['watch'], function() {
