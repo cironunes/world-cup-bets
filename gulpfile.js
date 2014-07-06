@@ -48,7 +48,8 @@ gulp.task('jshint', function() {
 
 gulp.task('css', function() {
   return gulp.src(['app/**/*.css', '!app/{bower_components,bower_components/**/*.css}'])
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist'))
+    .pipe(connect.reload());
 });
 
 gulp.task('images', function() {
@@ -58,7 +59,8 @@ gulp.task('images', function() {
 
 gulp.task('watch', function() {
   gulp.watch(['.app/index.html', './app/**/*.html'], ['html']);
-  gulp.watch(['.app/app.js', './app/**/*.js'], ['js']);
+  gulp.watch(['./app/**/*.js'], ['js']);
+  gulp.watch(['./app/**/*.css'], ['css']);
 });
 
 gulp.task('serve', ['watch'], function() {

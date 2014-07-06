@@ -9,6 +9,7 @@
   <!-- build:css css/style.css -->
   <link rel="stylesheet" href="bower_components/normalize-css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/sharing.css">
   <!-- endbuild -->
 
   <link href='http://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
@@ -29,28 +30,26 @@
     <bt-games></bt-games>
 
     <footer class="controls">
-      <div class="controls-wrapper">
-        <bt-share-twitter
+      <bt-share-twitter
           text="games | bet"
           url="'http://www.cironunes.com/world-cup-bets/'"
           active="(games | validBet).length"
-          ng-disabled="!(games | validBet).length"></bt-share-twitter>
-      </div>
+          ng-class="{active: hasValidBets(games), inactive: !hasValidBets(games)}">
+      </bt-share-twitter>
 
-      <div class="controls-wrapper">
         <bt-share-facebook
           text="games | bet"
           url="'http://www.cironunes.com/world-cup-bets/'"
           active="(games | validBet).length"
-          ng-disabled="!(games | validBet).length"></bt-share-facebook>
-      </div>
+          ng-class="{active: hasValidBets(games), inactive: !hasValidBets(games)}">
+        </bt-share-facebook>
     </footer>
   </div>
 
   <!-- build:js js/app.js -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="app.js"></script>
-  <script src="app/app.js"></script>
+  <script src="app/appController.js"></script>
   <script src="filters/filtersModule.js"></script>
   <script src="filters/flagsFilter.js"></script>
   <script src="filters/betFilter.js"></script>
