@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Ctrl: AppCtrl', function() {
   var scope, validBet;
 
