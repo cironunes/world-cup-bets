@@ -17,6 +17,6 @@ angular.module('bt.share')
           }
         };
       },
-      template: '<button class="bt-share bt-share-twitter" ng-click="share()">SHARE IT</button>'
+      template: '<button class="bt-share bt-share-twitter" ng-click="share()">Share it</button>'
     };
   });
